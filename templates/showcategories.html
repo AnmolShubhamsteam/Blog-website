@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
+<body class="bg-gray-100 p-4">
+    <div class="max-w-lg mx-auto">
+        <h1 class="text-3xl font-bold mb-4">Blog Categories</h1>
+        <ul class="divide-y divide-gray-300">
+            {% for cat in Categories %}
+            <li class="py-2">
+                <a href="{% url 'specific_categoy' cat.pk %}" class="text-blue-500 hover:text-blue-700">{{ cat.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="max-w-screen-xl mx-auto p-5 sm:p-10 md:p-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-10">
+        {% for post in object_list %}
+        <div class="rounded overflow-hidden shadow-lg">
+            <a href="#"></a>
+            <div class="relative">
+                <a href="{% url 'article_detail' post.pk %}">
+                    <img class="w-full"
+                        src="https://images.pexels.com/photos/196667/pexels-photo-196667.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500"
+                        alt="Sunset in the mountains">
+                    <div
+                        class="hover:bg-transparent transition duration-300 absolute bottom-0 top-0 right-0 left-0 bg-gray-900 opacity-25">
+                    </div>
+                </a>
+            </div>
+            <div class="px-6 py-4">
+
+                <a href={% url 'article_detail' post.pk %}
+                    class="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">Best
+                    {{ post.title }}</a>
+                <p class="text-gray-500 text-sm">
+                    {{ post.author }}
+                </p>
+            </div>
+            <div class="px-4 py-1">
+                <a href={% url 'editBlog' post.pk %}><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-full">
+                   Edit
+                  </button>
+                </a>
+                <a href={% url 'deleteBlog' post.pk %}><button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-2 rounded-full">
+                    Delete
+                   </button>
+                 </a>
+            </div>
+            
+            <div class="px-6 py-4">
+                <p class="text-gray-500 text-sm">
+                    <a href="{% url 'specific_categoy' post.category.pk %}">Category : <strong>{{ post.category }}</strong></a>
+                </p>
+                <a href={% url 'article_detail' post.pk %}
+                    class="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
+                <p class="text-gray-500 text-sm">
+                    {{ post.post_date }}
+                </p>
+            </a>
+            </div>
+            <div class="px-6 py-1">
+
+                <a href={% url 'article_detail' post.pk %}
+                    class="font-semibold text-lg inline-block hover:text-indigo-600 transition duration-500 ease-in-out">
+                <p class="text-gray-500 text-sm">
+                    {{ post.body|truncatewords:5 }}
+                </p>
+            </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
